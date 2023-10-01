@@ -22,8 +22,8 @@ module tt_um_chipTop ( input clk,
     wire [7:0] uio_oe_comp0;
     wire [7:0] uio_oe_comp1;
 
-    comp0 computeUnit_0 (.rst_n(rst_n), .ena(ena), .ui_in(ui_in), .uo_out(uo_out_comp0), .uio_in(uio_in), .uio_out(uio_out_comp0), .uio_oe(uio_oe_comp0));
-    comp1 computeUnit_1 (.rst_n(rst_n), .ena(ena), .ui_in(ui_in), .uo_out(uo_out_comp1), .uio_in(uio_in), .uio_out(uio_out_comp1), .uio_oe(uio_oe_comp1));
+    computeUnit_0 compU_0 (.rst_n(rst_n), .ena(ena), .ui_in(ui_in), .uo_out(uo_out_comp0), .uio_in(uio_in), .uio_out(uio_out_comp0), .uio_oe(uio_oe_comp0));
+    computeUnit_1 compU_1 (.rst_n(rst_n), .ena(ena), .ui_in(ui_in), .uo_out(uo_out_comp1), .uio_in(uio_in), .uio_out(uio_out_comp1), .uio_oe(uio_oe_comp1));
 
     assign uio_oe = uio_oe_comp0 | uio_oe_comp1;
     assign uio_out = uio_out_comp0 | uio_out_comp1;
