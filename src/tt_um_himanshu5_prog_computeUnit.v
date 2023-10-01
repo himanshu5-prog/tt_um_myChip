@@ -53,7 +53,7 @@ module tt_um_himanshu5_prog_computeUnit ( input clk,
             case (instruction[15:12])
                 4'b0000: // No-Op
                     begin
-                        tgt_reg_data = 0;
+                        tgt_reg_data <= 0;
                     end
                 4'b0001: // Load
                 // Load the data into tgt register
