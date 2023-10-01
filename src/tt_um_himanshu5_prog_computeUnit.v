@@ -87,10 +87,11 @@ module tt_um_himanshu5_prog_computeUnit ( input clk,
                         tgt_data_valid = 0;
                         tgt_reg_data = 0;
                     end
-                data_valid <= tgt_data_valid;
-                data <= physicalRegister[tgt_reg_id];
-                reg_id <= tgt_reg_id;
             endcase
+            
+            data_valid <= tgt_data_valid;
+            data <= physicalRegister[tgt_reg_id];
+            reg_id <= tgt_reg_id;
         end
    
 endmodule
