@@ -3,7 +3,8 @@
 module tt_um_himanshu5_prog_computeUnit ( input clk, 
                     input rstn, 
                     input [15:0] instruction, 
-                    input en, 
+                    input en,
+                    input ena,
                     output reg [7:0] data,
                     output reg data_valid,
                     output reg [3:0] reg_id);
