@@ -8,7 +8,6 @@ project:
   source_files:        
     - computeUnit_0.v
     - computeUnit_1.v
-    - seg7.v
     - tt_um_chiptop.v
 #    - decoder.v
   top_module:  "tt_um_himanshu5_prog_chipTop"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
@@ -73,5 +72,5 @@ documentation:
   external_hw:  ""      # Describe any external hardware needed
   discord:      ""      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
   doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
-  clock_hz:     10000000       # Clock frequency in Hz (if required)
+  clock_hz:            # Clock frequency in Hz (if required)
   picture:      ""      # relative path to a picture in your repository (must be 512kb or less)

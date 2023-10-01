@@ -15,7 +15,6 @@ module tt_um_himanshu5_prog_chipTop ( input clk,
 );
     wire [7:0] uo_out_comp0;
     wire [7:0] uo_out_comp1;
-    wire [7:0] uo_out_temp;
 
     wire [7:0] uio_out_comp0;
     wire [7:0] uio_out_comp1;
@@ -28,9 +27,6 @@ module tt_um_himanshu5_prog_chipTop ( input clk,
 
     assign uio_oe = uio_oe_comp0 | uio_oe_comp1;
     assign uio_out = uio_out_comp0 | uio_out_comp1;
-    assign uo_out_temp = uo_out_comp0 ^ uo_out_comp1;
-    assign uo_out[7] = 0;
-
-    seg7 seg_inst (.counter(uo_out_temp[3:0]), .segments(uo_out[6:0]));
+    assign uo_out = uo_out_comp0 ^ uo_out_comp1;
 
 endmodule
