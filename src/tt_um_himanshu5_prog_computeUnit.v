@@ -29,7 +29,7 @@ module tt_um_himanshu5_prog_computeUnit ( input clk,
     assign load_data   =   instruction[7:0];
 
     integer i;
-    always@(posedge clk)
+    always@(posedge clk) begin
         if (!rstn) begin
             data_out <= 0;
             data_valid <= 0;
@@ -93,5 +93,6 @@ module tt_um_himanshu5_prog_computeUnit ( input clk,
             data <= physicalRegister[tgt_reg_id];
             reg_id <= tgt_reg_id;
         end
+    end
    
 endmodule
