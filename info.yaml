@@ -8,6 +8,7 @@ project:
   source_files:        
     - computeUnit_0.v
     - computeUnit_1.v
+    - computeUnit_2.v
     - tt_um_chiptop.v
 #    - decoder.v
   top_module:  "tt_um_chipTop"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username

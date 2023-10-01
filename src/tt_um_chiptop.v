@@ -15,18 +15,22 @@ module tt_um_chipTop ( input clk,
 );
     wire [7:0] uo_out_comp0;
     wire [7:0] uo_out_comp1;
+    wire [7:0] uo_out_comp2;
 
     wire [7:0] uio_out_comp0;
     wire [7:0] uio_out_comp1;
+    wire [7:0] uio_out_comp2;
 
     wire [7:0] uio_oe_comp0;
     wire [7:0] uio_oe_comp1;
+    wire [7:0] uio_oe_comp2;
 
     computeUnit_0 compU_0 (.clk(clk), .rst_n(rst_n), .ena(ena), .ui_in(ui_in), .uo_out(uo_out_comp0), .uio_in(uio_in), .uio_out(uio_out_comp0), .uio_oe(uio_oe_comp0));
     computeUnit_1 compU_1 (.clk(clk), .rst_n(rst_n), .ena(ena), .ui_in(ui_in), .uo_out(uo_out_comp1), .uio_in(uio_in), .uio_out(uio_out_comp1), .uio_oe(uio_oe_comp1));
+    computeUnit_2 compU_2 (.clk(clk), .rst_n(rst_n), .ena(ena), .ui_in(ui_in), .uo_out(uo_out_comp2), .uio_in(uio_in), .uio_out(uio_out_comp2), .uio_oe(uio_oe_comp2));
 
-    assign uio_oe = uio_oe_comp0 | uio_oe_comp1;
-    assign uio_out = uio_out_comp0 | uio_out_comp1;
-    assign uo_out = uo_out_comp0 ^ uo_out_comp1;
+    assign uio_oe = uio_oe_comp0 | uio_oe_comp1 | uio_oe_comp2;
+    assign uio_out = uio_out_comp0 | uio_out_comp1 | uio_out_comp2;
+    assign uo_out = uo_out_comp0 ^ uo_out_comp1 ^ uo_out_comp2;
 
 endmodule
