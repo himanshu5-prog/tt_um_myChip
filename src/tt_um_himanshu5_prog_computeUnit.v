@@ -13,19 +13,17 @@ module tt_um_himanshu5_prog_computeUnit ( input clk,
                     output wire [7:0] uio_oe   // IOs: Bidirectional Enable path (active high: 0=input, 1=output)
     );
 
-    reg [15:0] physicalRegister [15:0];
-    wire [15:0] instruction;
+    reg [7:0] physicalRegister [15:0];
+    reg [15:0] instruction;
 
     
     // register ID----------
-    wire [3:0] src_reg0_id;
-    wire [3:0] src_reg1_id;
-    wire [3:0] tgt_reg_id;
+    reg [3:0] src_reg0_id;
+    reg [3:0] src_reg1_id;
+    reg [3:0] tgt_reg_id;
     //----------------------
     // register data--------
-    wire [7:0] src_reg0_data;
-    wire [7:0] src_reg1_data;
-    wire [7:0] tgt_reg_data;
+    reg [7:0] tgt_reg_data;
     //-----------------------
     
     wire [7:0] load_data;
@@ -60,30 +58,45 @@ module tt_um_himanshu5_prog_computeUnit ( input clk,
                 // Load the data into tgt register
                     begin
                         physicalRegister[tgt_reg_id] = load_data;
+                        tgt_reg_data = load_data;
                     end
                 4'b0010: // ADD
                     begin
-                        physicalRegister[tgt_reg_id] <= physicalRegister[src_reg0_id] + physicalRegister[src_reg1_id];
+                        tgt_reg_data = physicalRegister[src_reg0_id] + physicalRegister[src_reg1_id];
+                        physicalRegister[tgt_reg_id] = physicalRegister[src_reg0_id] + physicalRegister[src_reg1_id];
+
                     end
                 4'b0011: // subtract
                     begin
-                        physicalRegister[tgt_reg_id] <= physicalRegister[src_reg0_id] - physicalRegister[src_reg1_id];
+                        physicalRegister[tgt_reg_id] = physicalRegister[src_reg0_id] - physicalRegister[src_reg1_id];
+                        tgt_reg_data = physicalRegister[src_reg0_id] - physicalRegister[src_reg1_id];
                     end
                 4'b0100: // AND
                     begin
-                        physicalRegister[tgt_reg_id] <= physicalRegister[src_reg0_id] & physicalRegister[src_reg1_id];
+                        physicalRegister[tgt_reg_id] = physicalRegister[src_reg0_id] & physicalRegister[src_reg1_id];
+                        tgt_reg_data = physicalRegister[src_reg0_id] & physicalRegister[src_reg1_id];
                     end
                 4'b0101: // OR
                     begin
-                        physicalRegister[tgt_reg_id] <= physicalRegister[src_reg0_id] | physicalRegister[src_reg1_id];
+                        physicalRegister[tgt_reg_id] = physicalRegister[src_reg0_id] | physicalRegister[src_reg1_id];
+                        tgt_reg_data = physicalRegister[src_reg0_id] | physicalRegister[src_reg1_id];
                     end
                 4'b0110: // NOT
                     begin
-                        physicalRegister[tgt_reg_id] <= !physicalRegister[src_reg0_id];
+                        physicalRegister[tgt_reg_id][0] = !physicalRegister[src_reg0_id][0];
+                        physicalRegister[tgt_reg_id][1] = !physicalRegister[src_reg0_id][1];
+                        physicalRegister[tgt_reg_id][2] = !physicalRegister[src_reg0_id][2];
+                        physicalRegister[tgt_reg_id][3] = !physicalRegister[src_reg0_id][3];
+                        physicalRegister[tgt_reg_id][4] = !physicalRegister[src_reg0_id][4];
+                        physicalRegister[tgt_reg_id][5] = !physicalRegister[src_reg0_id][5];
+                        physicalRegister[tgt_reg_id][6] = !physicalRegister[src_reg0_id][6];
+                        physicalRegister[tgt_reg_id][7] = !physicalRegister[src_reg0_id][7];
+                        tgt_reg_data = physicalRegister[tgt_reg_id];
                     end
                 4'b0111: // Xor
                     begin
-                        physicalRegister[tgt_reg_id] <= physicalRegister[src_reg0_id] ^ physicalRegister[src_reg1_id];
+                        physicalRegister[tgt_reg_id] = physicalRegister[src_reg0_id] ^ physicalRegister[src_reg1_id];
+                        tgt_reg_data = physicalRegister[src_reg0_id] ^ physicalRegister[src_reg1_id];
                     end
                 default:
                     begin
@@ -92,7 +105,7 @@ module tt_um_himanshu5_prog_computeUnit ( input clk,
             endcase
             
             //data <= physicalRegister[tgt_reg_id];
-            uo_out <= physicalRegister[tgt_reg_id];
+            uo_out <= tgt_reg_data;
             //reg_id <= tgt_reg_id;
         end
     end
