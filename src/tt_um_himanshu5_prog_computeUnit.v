@@ -84,15 +84,23 @@ module tt_um_himanshu5_prog_computeUnit ( input clk,
                     end
                 4'b0110: // NOT
                     begin
-                        physicalRegister[tgt_reg_id][0] = !physicalRegister[src_reg0_id][0];
-                        physicalRegister[tgt_reg_id][1] = !physicalRegister[src_reg0_id][1];
-                        physicalRegister[tgt_reg_id][2] = !physicalRegister[src_reg0_id][2];
-                        physicalRegister[tgt_reg_id][3] = !physicalRegister[src_reg0_id][3];
-                        physicalRegister[tgt_reg_id][4] = !physicalRegister[src_reg0_id][4];
-                        physicalRegister[tgt_reg_id][5] = !physicalRegister[src_reg0_id][5];
-                        physicalRegister[tgt_reg_id][6] = !physicalRegister[src_reg0_id][6];
-                        physicalRegister[tgt_reg_id][7] = !physicalRegister[src_reg0_id][7];
-                        tgt_reg_data = physicalRegister[tgt_reg_id];
+                        physicalRegister[tgt_reg_id][0] <= !physicalRegister[src_reg0_id][0];
+                        physicalRegister[tgt_reg_id][1] <= !physicalRegister[src_reg0_id][1];
+                        physicalRegister[tgt_reg_id][2] <= !physicalRegister[src_reg0_id][2];
+                        physicalRegister[tgt_reg_id][3] <= !physicalRegister[src_reg0_id][3];
+                        physicalRegister[tgt_reg_id][4] <= !physicalRegister[src_reg0_id][4];
+                        physicalRegister[tgt_reg_id][5] <= !physicalRegister[src_reg0_id][5];
+                        physicalRegister[tgt_reg_id][6] <= !physicalRegister[src_reg0_id][6];
+                        physicalRegister[tgt_reg_id][7] <= !physicalRegister[src_reg0_id][7];
+                        
+                        tgt_reg_data[0] <= physicalRegister[tgt_reg_id][0];
+                        tgt_reg_data[1] <= physicalRegister[tgt_reg_id][1];
+                        tgt_reg_data[2] <= physicalRegister[tgt_reg_id][2];
+                        tgt_reg_data[3] <= physicalRegister[tgt_reg_id][3];
+                        tgt_reg_data[4] <= physicalRegister[tgt_reg_id][4];
+                        tgt_reg_data[5] <= physicalRegister[tgt_reg_id][5];
+                        tgt_reg_data[6] <= physicalRegister[tgt_reg_id][6];
+                        tgt_reg_data[7] <= physicalRegister[tgt_reg_id][7];
                     end
                 4'b0111: // Xor
                     begin
