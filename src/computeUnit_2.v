@@ -1,4 +1,4 @@
-odule computeUnit_2 ( input clk, 
+module computeUnit_2 ( input clk, 
                     input rst_n, 
                     //input [15:0] instruction, 
                     input ena,
