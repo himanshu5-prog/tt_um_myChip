@@ -1,9 +1,8 @@
 // This module is dataMemory which provides
 
 module tt_um_himanshu5_prog_computeUnit ( input clk, 
-                    input rstn, 
+                    input rst_n, 
                     input [15:0] instruction, 
-                    input en,
                     input ena,
                     output reg [7:0] data,
                     output reg data_valid,
@@ -34,7 +33,7 @@ module tt_um_himanshu5_prog_computeUnit ( input clk,
 
     integer i;
     always@(posedge clk) begin
-        if (!rstn) begin
+        if (!rst_n) begin
             data_out <= 0;
             data_valid <= 0;
             reg_id <= 0;
@@ -43,7 +42,7 @@ module tt_um_himanshu5_prog_computeUnit ( input clk,
                 physicalRegister[i] <= 0;
             end 
             
-        end else if (en) begin
+        end else if (ena) begin
             case (instruction[15:12])
                 4'b0000: // No-Op
                     begin
