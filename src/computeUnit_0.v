@@ -1,4 +1,4 @@
-module tt_um_himanshu5_prog_computeUnit ( input clk, 
+module computeUnit_0 ( input clk, 
                     input rst_n, 
                     //input [15:0] instruction, 
                     input ena,
