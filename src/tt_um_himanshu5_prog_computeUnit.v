@@ -23,10 +23,13 @@ module tt_um_himanshu5_prog_computeUnit ( input clk,
     
     wire [7:0] load_data;
 
-    assign src_reg0_id = instruction[7:4];
-    assign src_reg1_id = instruction[3:0];
-    assign tgt_reg_id  =  instruction[11:8];
-    assign load_data   =   instruction[7:0];
+    initial
+        begin 
+            src_reg0_id = instruction[7:4];
+            src_reg1_id = instruction[3:0];
+            tgt_reg_id  =  instruction[11:8];
+            load_data   =   instruction[7:0];
+        end
 
     integer i;
     always@(posedge clk) begin
