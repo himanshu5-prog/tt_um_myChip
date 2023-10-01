@@ -1,7 +1,7 @@
 `include "computeUnit_0.v"
 `include "computeUnit_1.v"
 
-module tt_um_chipTop (
+module tt_um_chipTop ( input clk,
                     input rst_n, 
                     //input [15:0] instruction, 
                     input ena,
