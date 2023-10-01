@@ -1,5 +1,5 @@
-`include "computeUnit_0.v"
-`include "computeUnit_1.v"
+//`include "computeUnit_0.v"
+//`include "computeUnit_1.v"
 
 module tt_um_chipTop ( input clk,
                     input rst_n, 
