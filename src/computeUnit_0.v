@@ -12,19 +12,19 @@ module computeUnit_0 ( input clk,
     );
 
     reg [7:0] physicalRegister [15:0];
-    reg [15:0] instruction;
+    wire [15:0] instruction;
 
     
     // register ID----------
-    reg [3:0] src_reg0_id;
-    reg [3:0] src_reg1_id;
-    reg [3:0] tgt_reg_id;
+    wire [3:0] src_reg0_id;
+    wire [3:0] src_reg1_id;
+    wire [3:0] tgt_reg_id;
     //----------------------
     // register data--------
     reg [7:0] tgt_reg_data;
     //-----------------------
     
-    reg [7:0] load_data;
+    wire [7:0] load_data;
     assign uio_oe = 8'b11111111;
     assign uio_out = 8'b00000000;
     assign instruction = {ui_in, uio_in};
