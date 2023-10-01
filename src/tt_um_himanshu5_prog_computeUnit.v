@@ -21,7 +21,7 @@ module tt_um_himanshu5_prog_computeUnit ( input clk,
     //-----------------------
     wire tgt_data_valid;
     
-    wire load_data[7:0];
+    wire [7:0] load_data;
 
     assign src_reg0_id = instruction[7:4];
     assign src_reg1_id = instruction[3:0];
