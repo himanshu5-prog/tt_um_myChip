@@ -6,7 +6,13 @@ module tt_um_himanshu5_prog_computeUnit ( input clk,
                     input ena,
                     output reg [7:0] data,
                     output reg data_valid,
-                    output reg [3:0] reg_id);
+                    output reg [3:0] reg_id,
+                    input  wire [7:0] ui_in,    // Dedicated inputs - connected to the input switches
+                    output wire [7:0] uo_out,   // Dedicated outputs - connected to the 7 segment display
+                    input  wire [7:0] uio_in,   // IOs: Bidirectional Input path
+                    output wire [7:0] uio_out,  // IOs: Bidirectional Output path
+                    output wire [7:0] uio_oe   // IOs: Bidirectional Enable path (active high: 0=input, 1=output)
+    );
 
     reg [15:0] physicalRegister [15:0];
     // register ID----------
