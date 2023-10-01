@@ -8,7 +8,7 @@ module tt_um_himanshu5_prog_computeUnit ( input clk,
                     output reg data_valid,
                     output reg [3:0] reg_id);
 
-    reg [15:0] physicalRegister [7:0];
+    reg [15:0] physicalRegister [15:0];
     // register ID----------
     wire [3:0] src_reg0_id;
     wire [3:0] src_reg1_id;
