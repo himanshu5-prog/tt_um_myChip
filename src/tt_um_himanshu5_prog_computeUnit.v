@@ -26,7 +26,7 @@ module tt_um_himanshu5_prog_computeUnit ( input clk,
     reg [7:0] tgt_reg_data;
     //-----------------------
     
-    wire [7:0] load_data;
+    reg [7:0] load_data;
     assign uio_oe = 8'b00000000;
     initial
         begin 
