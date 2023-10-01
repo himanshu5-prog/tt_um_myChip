@@ -1,9 +1,6 @@
 module computeUnit_0 ( input clk, 
                     input rst_n, 
-                    //input [15:0] instruction, 
                     input ena,
-                    //output reg [7:0] data,
-                    //output reg [3:0] reg_id,
                     input  wire [7:0] ui_in,    // Dedicated inputs - connected to the input switches
                     output wire [7:0] uo_out,   // Dedicated outputs - connected to the 7 segment display
                     input  wire [7:0] uio_in,   // IOs: Bidirectional Input path
@@ -108,9 +105,6 @@ module computeUnit_0 ( input clk,
                         tgt_reg_data <= 8'b00000000;
                     end
             endcase
-            
-            //data <= physicalRegister[tgt_reg_id];
-            //reg_id <= tgt_reg_id;
         end
     end
    
