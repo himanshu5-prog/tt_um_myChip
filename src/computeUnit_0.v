@@ -37,10 +37,11 @@ module computeUnit_0 ( input clk,
         end
 
     integer i;
+    assign uo_out = tgt_reg_data;
     always@(posedge clk) begin
         if (!rst_n) begin
             //data <= 0;
-            uo_out <= 0;
+            tgt_reg_data <= 0;
             //reg_id <= 0;
 
             for (i = 0; i< 15; i= i + 1) begin
@@ -112,7 +113,6 @@ module computeUnit_0 ( input clk,
             endcase
             
             //data <= physicalRegister[tgt_reg_id];
-            uo_out <= tgt_reg_data;
             //reg_id <= tgt_reg_id;
         end
     end
