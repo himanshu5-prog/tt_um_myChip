@@ -25,7 +25,7 @@ module computeUnit_1 ( input clk,
     //-----------------------
     
     reg [7:0] load_data;
-    assign uio_oe = 8'b00000000;
+    assign uio_oe = 8'b11111111;
     assign uio_out = 8'b00000000;
     initial
         begin 
