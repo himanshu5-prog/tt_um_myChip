@@ -27,14 +27,11 @@ module computeUnit_0 ( input clk,
     reg [7:0] load_data;
     assign uio_oe = 8'b11111111;
     assign uio_out = 8'b00000000;
-    initial
-        begin 
-            instruction = {ui_in, uio_in};
-            src_reg0_id = instruction[7:4];
-            src_reg1_id = instruction[3:0];
-            tgt_reg_id  =  instruction[11:8];
-            load_data   =   instruction[7:0];
-        end
+    assign instruction = {ui_in, uio_in};
+    assign src_reg0_id = instruction[7:4];
+    assign src_reg1_id = instruction[3:0];
+    assign tgt_reg_id  =  instruction[11:8];
+    assign load_data   =   instruction[7:0];
 
     integer i;
     assign uo_out = tgt_reg_data;
