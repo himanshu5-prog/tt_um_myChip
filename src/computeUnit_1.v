@@ -5,7 +5,7 @@ module computeUnit_1 ( input clk,
                     //output reg [7:0] data,
                     //output reg [3:0] reg_id,
                     input  wire [7:0] ui_in,    // Dedicated inputs - connected to the input switches
-                    output reg [7:0] uo_out,   // Dedicated outputs - connected to the 7 segment display
+                    output wire [7:0] uo_out,   // Dedicated outputs - connected to the 7 segment display
                     input  wire [7:0] uio_in,   // IOs: Bidirectional Input path
                     output wire [7:0] uio_out,  // IOs: Bidirectional Output path
                     output wire [7:0] uio_oe   // IOs: Bidirectional Enable path (active high: 0=input, 1=output)
@@ -45,14 +45,14 @@ module computeUnit_1 ( input clk,
             //reg_id <= 0;
 
             for (i = 0; i< 15; i= i + 1) begin
-                physicalRegister[i] <= 0;
+                physicalRegister[i] <= 8'b00000000;
             end 
             
         end else if (ena) begin
             case (instruction[15:12])
                 4'b0000: // No-Op
                     begin
-                        tgt_reg_data <= 0;
+                        tgt_reg_data <= 8'b00000000;
                     end
                 4'b0001: // Load
                 // Load the data into tgt register
@@ -92,14 +92,14 @@ module computeUnit_1 ( input clk,
                         physicalRegister[tgt_reg_id][6] <= !physicalRegister[src_reg0_id][6];
                         physicalRegister[tgt_reg_id][7] <= !physicalRegister[src_reg0_id][7];
                         
-                        tgt_reg_data[0] <= physicalRegister[tgt_reg_id][0];
-                        tgt_reg_data[1] <= physicalRegister[tgt_reg_id][1];
-                        tgt_reg_data[2] <= physicalRegister[tgt_reg_id][2];
-                        tgt_reg_data[3] <= physicalRegister[tgt_reg_id][3];
-                        tgt_reg_data[4] <= physicalRegister[tgt_reg_id][4];
-                        tgt_reg_data[5] <= physicalRegister[tgt_reg_id][5];
-                        tgt_reg_data[6] <= physicalRegister[tgt_reg_id][6];
-                        tgt_reg_data[7] <= physicalRegister[tgt_reg_id][7];
+                        tgt_reg_data[0] <= !physicalRegister[tgt_reg_id][0];
+                        tgt_reg_data[1] <= !physicalRegister[tgt_reg_id][1];
+                        tgt_reg_data[2] <= !physicalRegister[tgt_reg_id][2];
+                        tgt_reg_data[3] <= !physicalRegister[tgt_reg_id][3];
+                        tgt_reg_data[4] <= !physicalRegister[tgt_reg_id][4];
+                        tgt_reg_data[5] <= !physicalRegister[tgt_reg_id][5];
+                        tgt_reg_data[6] <= !physicalRegister[tgt_reg_id][6];
+                        tgt_reg_data[7] <= !physicalRegister[tgt_reg_id][7];
                     end
                 4'b0111: // Xor
                     begin
@@ -108,7 +108,7 @@ module computeUnit_1 ( input clk,
                     end
                 default:
                     begin
-                        tgt_reg_data <= 0;
+                        tgt_reg_data <= 8'b00000000;
                     end
             endcase
             
